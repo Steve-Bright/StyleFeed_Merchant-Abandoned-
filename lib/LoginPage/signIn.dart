@@ -105,11 +105,55 @@ class _SigningInPageState extends State<SigningInPage> {
                                 onPressed: () {
                                   if (_formKey.currentState!.validate()) {
                                     // Validation succeeded, save and process the data
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Container(
+                                            padding: EdgeInsets.all(16),
+                                            // height: 90,
+                                            decoration: BoxDecoration(
+                                              color: Colors.black,
+                                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              children: [
+                                                Icon(Icons.check, color: Colors.white,),
+                                                SizedBox(width: 10),
+                                                Text('Login Successful', style: TextStyle(fontSize: 18, color: Colors.white)),
+                                              ],
+                                            )
+                                        ),
+                                        backgroundColor: Colors.transparent,
+                                        elevation: 0,
+                                      ),
+                                    );
                                     Navigator.pushReplacementNamed(
                                         context, '/productDetail');
                                     _formKey.currentState!.save();
                                     // Perform additional actions, e.g., send data to a server
                                   }
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Container(
+                                          padding: EdgeInsets.all(16),
+                                          // height: 90,
+                                          decoration: BoxDecoration(
+                                            color: Colors.red,
+                                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            children: [
+                                              Icon(Icons.check, color: Colors.white,),
+                                              SizedBox(width: 10),
+                                              Text('Login Unsuccessful', style: TextStyle(fontSize: 18, color: Colors.white)),
+                                            ],
+                                          )
+                                      ),
+                                      backgroundColor: Colors.transparent,
+                                      elevation: 0,
+                                    ),
+                                  );
                                 },
                                 style: ButtonStyle(
                                     backgroundColor:
@@ -190,19 +234,6 @@ class _SigningInPageState extends State<SigningInPage> {
                                       ),
                                     ]
                                 ),
-
-                                Center(
-                                  child: Padding(
-                                    padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
-                                    child: InkWell(
-                                        onTap: (){
-                                          // Navigator.pushReplacementNamed(context, '/userHome');
-                                        },
-                                        child: Text('Continue as a guest', style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold))
-                                    ),
-                                  ),
-                                ),
-
                               ]
                           ),
 
